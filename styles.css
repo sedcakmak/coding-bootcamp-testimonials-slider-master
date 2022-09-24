@@ -1,0 +1,75 @@
+.slideshow-container {
+  max-width: 1440px;
+  position: relative;
+  margin: auto;
+}
+@media screen and (max-width: 768px) {
+  .slideshow-container {
+    max-width: 375px;
+  }
+}
+.slides {
+  display: flex;
+  flex-direction: row;
+  background-image: url("images/pattern-curve.svg"), url("images/pattern-bg.svg"), url("images/pattern-quotes.svg");
+  background-repeat: no-repeat;
+  background-position: left bottom, right, left top;
+  padding: 2rem;
+}
+@media screen and (max-width: 768px) {
+  .slides {
+    flex-direction: column;
+  }
+}
+.quotes {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: #000;
+  z-index: 1;
+  padding: 2rem;
+}
+.quotes .persona-name {
+  font-size: 22px;
+  font-weight: 700;
+}
+.quotes .persona-name span {
+  color: #999999;
+  font-weight: 300;
+}
+@media screen and (max-width: 768px) {
+  .quotes {
+    order: 2;
+  }
+}
+@media screen and (max-width: 768px) {
+  .persona {
+    order: 1;
+  }
+}
+.slide-buttons {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: space-around;
+  align-items: center;
+  background-color: red;
+  border-radius: 3rem;
+  width: 5%;
+  height: 2.5rem;
+}
+.slide-buttons img {
+  height: 1rem;
+}
+.slide-buttons img:hover {
+  cursor: pointer;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
