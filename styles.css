@@ -9,16 +9,41 @@
   }
 }
 .slides {
-  display: flex;
-  flex-direction: row;
   background-image: url("images/pattern-curve.svg"), url("images/pattern-bg.svg"), url("images/pattern-quotes.svg");
   background-repeat: no-repeat;
   background-position: left bottom, right, left top;
   padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 768px) {
   .slides {
     flex-direction: column;
+  }
+}
+.active {
+  display: flex;
+}
+.hidden {
+  display: none;
+}
+.fade {
+  -webkit-animation: fade 1s ease-out;
+  animation: fade 1s ease-out;
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 .quotes {
@@ -61,10 +86,8 @@
   height: 2.5rem;
 }
 .slide-buttons img {
-  height: 1rem;
-}
-.slide-buttons img:hover {
   cursor: pointer;
+  height: 1rem;
 }
 .attribution {
   font-size: 11px;

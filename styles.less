@@ -22,18 +22,48 @@
 }
 
 .slides {
-  display: flex;
-  flex-direction: row;
   background-image: url("@{pattern}curve.svg"), url("@{pattern}bg.svg"),
     url("@{pattern}quotes.svg");
   background-repeat: no-repeat;
   background-position: left bottom, right, left top;
   padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media screen {
     @media (max-width: 768px) {
       flex-direction: column;
     }
+  }
+}
+
+.active {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.fade {
+  -webkit-animation: fade 1s ease-out;
+  animation: fade 1s ease-out;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -82,11 +112,8 @@
   height: 2.5rem;
 
   img {
+    cursor: pointer;
     height: 1rem;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
 
