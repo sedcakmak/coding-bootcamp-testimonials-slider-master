@@ -15,6 +15,5 @@ function showSlides() {
       ? (slides[i].style.display = "flex")
       : (slides[i].style.display = "none");
   }
-
   timer = setTimeout(showSlides, 5000);
 }

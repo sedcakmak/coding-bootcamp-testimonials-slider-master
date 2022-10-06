@@ -1,23 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .slideshow-container {
   max-width: 1440px;
   position: relative;
   margin: auto;
+  padding: 2rem;
+  height: 100vh;
 }
 @media screen and (max-width: 768px) {
   .slideshow-container {
     max-width: 375px;
+    height: 100vh;
+    padding: 0;
   }
 }
 .slides {
-  background-image: url("images/pattern-curve.svg"), url("images/pattern-bg.svg"), url("images/pattern-quotes.svg");
+  background-image: url("images/pattern-curve.svg");
   background-repeat: no-repeat;
-  background-position: left bottom, right, left top;
-  padding: 2rem;
+  background-position: left bottom;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding: 5rem;
+  background-size: min(60vw, 47%);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 768px) {
   .slides {
     flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
   }
 }
 .active {
@@ -52,46 +68,158 @@
   font-weight: 300;
   color: #000;
   z-index: 1;
-  padding: 2rem;
+  background-image: url("images/pattern-quotes.svg");
+  background-repeat: no-repeat;
+  background-position: 38% 0%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  padding-left: 10rem;
+  margin: auto;
 }
-.quotes .persona-name {
+.quotes p {
+  max-width: 113rem;
+}
+@media screen and (max-width: 768px) {
+  .quotes p {
+    padding-top: 2rem;
+    padding-left: 0;
+  }
+}
+.quotes .avatar-name {
   font-size: 22px;
   font-weight: 700;
+  margin-top: 2rem;
 }
-.quotes .persona-name span {
+.quotes .avatar-name span {
   color: #999999;
   font-weight: 300;
 }
 @media screen and (max-width: 768px) {
-  .quotes {
-    order: 2;
+  .quotes .avatar-name {
+    font-size: 12.8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1rem;
   }
 }
 @media screen and (max-width: 768px) {
-  .persona {
+  .quotes {
+    order: 2;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 1.8rem;
+    line-height: 1.5rem;
+    background-position: 50% 0;
+    margin-top: 0;
+  }
+}
+.avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/pattern-bg.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  left: 4%;
+}
+.avatar img {
+  border-radius: 4px;
+  width: min(70vw, 30rem);
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  margin: auto;
+  left: -10rem;
+  top: -0.5rem;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 2rem 2.2rem -1.3rem hsl(240, 18%, 77%);
+}
+@media screen and (max-width: 768px) {
+  .avatar img {
+    margin: auto;
+    width: min(70vw, 17rem);
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .avatar {
     order: 1;
+    background-size: contain;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    height: 50%;
   }
 }
 .slide-buttons {
   display: flex;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 17.5%;
+  left: 60%;
   justify-content: space-around;
   align-items: center;
-  background-color: red;
+  background-color: whitesmoke;
   border-radius: 3rem;
-  width: 5%;
+  width: 6%;
   height: 2.5rem;
+  box-shadow: 0 0.2rem 1rem hsl(240, 18%, 77%);
 }
 .slide-buttons img {
   cursor: pointer;
   height: 1rem;
 }
+.slide-buttons img:hover {
+  -webkit-filter: drop-shadow(0px 0px 10px hsl(240, 38%, 20%));
+  filter: drop-shadow(0px 0px 10px hsl(240, 38%, 20%));
+  -webkit-animation: scale-arrow 0.3s ease-in;
+  animation: scale-arrow 0.3s ease-in;
+}
+@media screen and (min-width: 1100px) {
+  .slide-buttons img:hover {
+    -webkit-animation: scale-arrow 0.8s ease-in infinite;
+    animation: scale-arrow 0.8s ease-in infinite;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slide-buttons {
+    top: 37%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 23%;
+  }
+}
+@-webkit-keyframes scale-arrow {
+  50% {
+    transform: scale(2, 2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes scale-arrow {
+  50% {
+    transform: scale(2, 2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .attribution {
   font-size: 11px;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);

@@ -9,29 +9,45 @@
 @mobileWidth: 375px;
 @pattern: "./images/pattern-";
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .slideshow-container {
   max-width: @desktopWidth;
   position: relative;
   margin: auto;
+  padding: 2rem;
+  height: 100vh;
 
   @media screen {
     @media (max-width: 768px) {
       max-width: @mobileWidth;
+      height: 100vh;
+      padding: 0;
     }
   }
 }
 
 .slides {
-  background-image: url("@{pattern}curve.svg"), url("@{pattern}bg.svg"),
-    url("@{pattern}quotes.svg");
+  background-image: url("@{pattern}curve.svg");
   background-repeat: no-repeat;
-  background-position: left bottom, right, left top;
-  padding: 2rem;
+  background-position: left bottom;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding: 5rem;
+  background-size: min(60vw, 47%);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media screen {
     @media (max-width: 768px) {
       flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
     }
   }
 }
@@ -73,27 +89,99 @@
   font-weight: @textFontWeight;
   color: @text-color;
   z-index: 1;
-  padding: 2rem;
-  .persona-name {
+  background-image: url("@{pattern}quotes.svg");
+  background-repeat: no-repeat;
+  background-position: 38% 0%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  padding-left: 10rem;
+  margin: auto;
+
+  p {
+    max-width: 113rem;
+
+    @media screen {
+      @media (max-width: 768px) {
+        padding-top: 2rem;
+        padding-left: 0;
+      }
+    }
+  }
+  .avatar-name {
     font-size: @textFontSize - 10;
     font-weight: @textFontWeight + 400;
+    margin-top: 2rem;
 
     span {
       color: lighten(@text-color, 60%);
       font-weight: @textFontWeight;
     }
+    @media screen {
+      @media (max-width: 768px) {
+        font-size: @textFontSize * 0.4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.1rem;
+      }
+    }
   }
   @media screen {
     @media (max-width: 768px) {
       order: 2;
+      font-size: @textFontSize * 0.5;
+      text-align: center;
+      padding: 0 1.8rem;
+      line-height: 1.5rem;
+      background-position: 50% 0;
+      margin-top: 0;
     }
   }
 }
 
-.persona {
+.avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("@{pattern}bg.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  left: 4%;
+
+  img {
+    border-radius: 4px;
+    width: min(70vw, 30rem);
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    margin: auto;
+    left: -10rem;
+    top: -0.5rem;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 2rem 2.2rem -1.3rem @grayishBlue;
+
+    @media screen {
+      @media (max-width: 768px) {
+        margin: auto;
+        width: min(70vw, 17rem);
+        text-align: center;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 2rem;
+      }
+    }
+  }
   @media screen {
     @media (max-width: 768px) {
       order: 1;
+      background-size: contain;
+      width: 100%;
+      right: 0;
+      bottom: 0;
+      height: 50%;
     }
   }
 }
@@ -101,25 +189,72 @@
 .slide-buttons {
   display: flex;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 17.5%;
+  left: 60%;
   justify-content: space-around;
   align-items: center;
-  background-color: red;
+  background-color: whitesmoke;
   border-radius: 3rem;
-  width: 5%;
+  width: 6%;
   height: 2.5rem;
+  box-shadow: 0 0.2rem 1rem @grayishBlue;
 
   img {
     cursor: pointer;
     height: 1rem;
+    &:hover {
+      -webkit-filter: drop-shadow(0px 0px 10px @darkBlue);
+      filter: drop-shadow(0px 0px 10px @darkBlue);
+      -webkit-animation: scale-arrow 0.3s ease-in;
+      animation: scale-arrow 0.3s ease-in;
+    }
+    @media screen {
+      @media (min-width: 1100px) {
+        &:hover {
+          -webkit-animation: scale-arrow 0.8s ease-in infinite;
+          animation: scale-arrow 0.8s ease-in infinite;
+        }
+      }
+    }
+  }
+
+  @media screen {
+    @media (max-width: 768px) {
+      top: 37%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 23%;
+    }
+  }
+}
+
+@-webkit-keyframes scale-arrow {
+  50% {
+    transform: scale(2, 2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes scale-arrow {
+  50% {
+    transform: scale(2, 2);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }
 
 .attribution {
   font-size: 11px;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .attribution a {
