@@ -9,6 +9,7 @@ This is a solution to the [Coding bootcamp testimonials slider challenge on Fron
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [Continued development](#continued-development)
 - [Author](#author)
 
 ## Overview
@@ -31,7 +32,10 @@ Coding Bootcamp Testimonials Slider done with HTML, LESS and Javascript.
 - Semantic HTML5 markup
 - LESS
 - Flexbox
-- Javascript
+
+### Continued development
+
+It's the first time I used Less in a project. I'd like to deepen my knowledge and especially delve into mixins in the next project.
 
 ## Author
 
